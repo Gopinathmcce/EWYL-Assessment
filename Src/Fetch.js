@@ -14,13 +14,19 @@ function Fetch() {
                 })
             })
     }, []);
-    const pname = useRef(null);
+    const click =()=>{
+        const search=(data.filter((result)=>result.name.first==item));
+        setData(search);
+    }
     console.log(data);
     return (
+
         
-        <div className='search'>
-          <input type="text" placeholder='search' id='search' />
-          <button> submit </button>
+        <div>
+          <input type="text" placeholder='search' id='search' onChange={(e)=>setItem(e.target.value)} />
+
+          <button onclick={click}> submit </button>
+          
             {
                 (data.length > 0) && data.map((result,index)=>
                 (
@@ -28,7 +34,8 @@ function Fetch() {
                         <img src={result.picture.large} />
                         {result.name.title} 
                         {result.name.first}
-                        {result.name.last}
+                        {result.name.last}<br></br>
+                        {result.email}
                     </div>
                 )
                 )
